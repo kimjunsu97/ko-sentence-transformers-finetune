@@ -1,0 +1,7 @@
+__pycache__/
+checkpoints/
+finetune_paws/
+finetune_sts/
+KorNLUDatasets/
+model/
+results/
