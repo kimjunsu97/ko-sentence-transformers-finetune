@@ -1,0 +1,69 @@
+model:
+  save_model_list: ["sentence-transformers/all-MiniLM-L6-v2" ,
+                    "sentence-transformers/paraphrase-MiniLM-L6-v2" ,
+                    "sentence-transformers/all-MiniLM-L12-v2" ,
+                    "paraphrase-multilingual-MiniLM-L12-v2" ,
+                    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" ,
+                    "intfloat/multilingual-e5-large" ,
+                    "BAAI/bge-m3" ,
+                    "sentence-transformers/all-mpnet-base-v2",
+                    "Alibaba-NLP/gte-multilingual-base",     
+                    "nomic-ai/nomic-embed-text-v1.5",
+                    "intfloat/multilingual-e5-large-instruct",        
+                    "jhgan/ko-sroberta-multitask",
+                    "upskyy/bge-m3-korean"]
+
+  train_model_list: #["sentence-transformers/all-MiniLM-L6-v2" ,
+                    #"sentence-transformers/paraphrase-MiniLM-L6-v2" ,
+                    #"sentence-transformers/all-MiniLM-L12-v2" ,
+                    #"paraphrase-multilingual-MiniLM-L12-v2" ,
+                    #"sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" ,
+                    #"intfloat/multilingual-e5-large" ,
+                    #["BAAI/bge-m3" ,
+                    ["sentence-transformers/all-mpnet-base-v2",
+                    "Alibaba-NLP/gte-multilingual-base",     
+                    "nomic-ai/nomic-embed-text-v1.5",
+                    "intfloat/multilingual-e5-large-instruct",        
+                    "jhgan/ko-sroberta-multitask",
+                    "upskyy/bge-m3-korean"]
+
+  test_model_list: ["./model/sentence-transformers/all-MiniLM-L6-v2" ,
+                    "./model/sentence-transformers/paraphrase-MiniLM-L6-v2" ,
+                    "./model/sentence-transformers/all-MiniLM-L12-v2" ,
+                    "./model/paraphrase-multilingual-MiniLM-L12-v2" ,
+                    "./model/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" ,
+                    "./model/intfloat/multilingual-e5-large" ,
+                    "./model/BAAI/bge-m3" ,
+                    "./model/sentence-transformers/all-mpnet-base-v2",
+                    "./model/Alibaba-NLP/gte-multilingual-base",     
+                    "./model/nomic-ai/nomic-embed-text-v1.5",
+                    "./model/intfloat/multilingual-e5-large-instruct",        
+                    "./model/jhgan/ko-sroberta-multitask",
+                    "./model/upskyy/bge-m3-korean"]
+
+dataset_list:
+  #sts:
+  #  train: "./KorNLUDatasets/KorSTS/sts-train.tsv"
+  #  val: "./KorNLUDatasets/KorSTS/sts-dev.tsv"
+  #  test: "./KorNLUDatasets/KorSTS/sts-test.tsv"
+  paws:
+    train: "./KorNLUDatasets/KorPAWS/translated_train.tsv"
+    val: "./KorNLUDatasets/KorPAWS/dev_2k.tsv"
+    test: "./KorNLUDatasets/KorPAWS/dev_2k.tsv"
+
+train_args:
+  epoch: 1
+  batch_size: 16
+  learning_rate: 2e-5
+  warmup_ratio: 0.1
+  fp16: True
+  bf16: False
+  eval_strategy: 'steps'
+  eval_steps: 1000
+  save_strategy: "steps"
+  save_steps: 1000
+
+test_args:
+  batch_size: 16
+  output_file: results.csv
+
